@@ -5,30 +5,32 @@ import {useState} from 'react';
 import Celebrity from '../Celebrty/Celebrity';
 import Connect from '../Connect/Connect';
 const Body = () => {
+    
     const [friends,setFriends]=useState(data);
+ 
     const [connect,setConnect]=useState([]);
-    //console.log(data);
+    const [condition,setCondition]=useState("add");
+    var [remove,setRemove]=useState([]);
+    
+    console.log(connect);
     const handleAddFriend=(friend)=>{
-        console.log("Clicked");
+        
+        console.log("Clicked",friend);
         console.log(friend);
+        
         const newConnection=[...connect,friend]; 
         setConnect(newConnection); 
+       
+       
         //console.log(newConnection)
-        const add=document.getElementById("addBtn");
-        add.style.display="none";
-        const remove=document.getElementById("removeBtn");
-        remove.style.display="block";
+        
     }
     const handleRemoveFriend=(friend)=>{
-        //console.log("Clicked remove");
-        const currentFriend=connect.filter((e,val)=>{if(e!==friend.val){
-        return e;}});
-        setConnect(connect);
-        console.log(currentFriend);
-        const add=document.getElementById("addBtn");
-        add.style.display="block";
-        const remove=document.getElementById("removeBtn");
-        remove.style.display="none";
+        console.log(friend);
+       var a=connect.filter(b=>b!==friend)
+        setConnect(a)
+            
+
     }
         
         return (
@@ -36,13 +38,19 @@ const Body = () => {
                <div className="left-side">
                {
                     friends.map(friend=><Celebrity
-                        handleAddFriend={handleAddFriend}
-                        handleRemoveFriend={handleRemoveFriend}
-                     friend={friend} ></Celebrity>)
+                        handleAddFriend={handleAddFriend} 
+                        condition={condition}
+                     friend={friend}
+                     connect={connect}
+                     handleRemoveFriend={handleRemoveFriend}
+                     
+                      ></Celebrity>)
                }    
                </div>
                <div className="right-side">
-                  <Connect connect={connect}></Connect>
+                  <Connect connect={connect}
+                  //remove={remove}
+                           ></Connect>
                </div>
             </div>
         );

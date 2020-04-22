@@ -2,6 +2,7 @@ import React from 'react';
 import './Connect.css';
 
 const Connect = (props) => {
+    console.log(props.connect);
     const connect=props.connect;
     let total=0;
     for(let i=0;i<connect.length;i++){

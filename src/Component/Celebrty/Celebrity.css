@@ -7,6 +7,7 @@
 }
 .celebrity img{
     height: 250px;
+    border-radius: 120px;
     
 }
 .celebrity h4{
@@ -23,6 +24,7 @@
     font-weight: 800;
     padding: 10px 15px;
     cursor: pointer;
+    
 }
 .remove{
     display: none;
